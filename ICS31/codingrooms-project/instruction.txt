@@ -1,0 +1,65 @@
+You will write a program to keep track of reservations at "AntBnB", a small "bed and breakfast" hotel.
+Your program will keep track of the rooms available for rent (these vary, since sometimes a room is closed for redecoration) and the reservations that guests have made for these rooms.
+
+Technical Details
+Everything in Stage I goes into BandBV.py
+Take a command line argument which is the filename, which is the command script, in your main statement. Do NOT take input! Read the file with the given filename.
+Create a function called anteaterbnb() which takes one input argument which is a string representing command script
+Process the string line-by-line (Hint: split by newline character)
+Create a variable (in modular scope) named "bedrooms", with appropriate data structure, to record bedroom numbers
+Create a function command_lb() which takes in one single line of command (a string) starting with "LB" and process accordingly
+Create a function command_pl() which takes in one single line of command (a string) starting with "PL" and process accordingly
+Create a function command_nb() which takes in one single line of command (a string) starting with "NB" and process accordingly
+In anteaterbnb(), call one of the command_* functions whenever a newline in command script is stepped onto
+Add functions for other commands as needed in each stage
+Don't be afraid to think outside the box
+
+1. Stage I
+For this stage, your program will keep track of the rooms that are available. This stage implements four commands, as described below. On each command line, the first two non-whitespace characters are the command; command letters may be upper or lower case.
+
+NB (for "add a new bedroom") followed by an integer room number (in the range 1\u2013999). Add a new bedroom with the specified room number.
+LB (for "list bedrooms"). Print a list of the bedrooms currently available. The input file may contain any number of these commands in any order; each LB command prints a list of available bedrooms based on what has been added as of that point. See the sample output below for the format of the printed bedroom list. For this stage, it doesn't matter what order the bedrooms appear in.
+PL (for "print line"), followed by any text. Simply print (or "echo") a line, copying the input (not counting the PL and leading whitespace) to the output. You'll find it useful in testing, and it's also a simple way to make the program's reports clearer or fancier.
+** Comment, followed by any text. Like comments in a program, comment lines don't have any effect on the program's behavior; they just serve as annotations in the command file.
+
+
+2. Stage II
+Each stage of this assignment will continue to handle all the commands of the previous stages, of course. For this stage, your program will handle deletions from the list of available bedrooms.
+
+DB (for "delete bedroom"), followed by a bedroom number. Delete the specified room from the list. Print an error message if the specified room isn't on the list. Here is some sample input for this stage:
+
+3. Stage III
+For this stage, your program will keep track of reservations for specific rooms on specific dates. The first new command for this stage adds a reservation:
+
+RR (for "reserve room") followed by a bedroom number, then an arrival date in the form mm/dd/yyyy,
+then a departure date in the form mm/dd/yyyy, then the guest's name): Add a new reservation for the specified room on the specified dates. 
+Your program will keep track of all the reservations. An attempt to reserve a room that isn't on the list of available rooms should produce an error message. 
+(Note that "available" means the same thing here that it has in the previous stages: Any room that is "in service," whether reserved by a guest or not, is "available." At this stage your program is not checking for occupied or free rooms.) At this stage, your program does not have to perform any checking that the dates are valid, nor does it have to identify conflicting reservations. Each new reservation prints and saves a unique "confirmation number" so the user can refer to it later (to cancel it, for example); this confirmation number should just be 1 for the first reservation added, 2 for the next, and so on, always increasing.
+
+Also handle these commands:
+
+LR (for "list reservations"). Print all the reservations.
+DR (for "delete reservation"), followed by the confirmation number of a reservation. Deletes the specified reservation. If a DR command gives a confirmation number that isn't in the list of reservations, your program should produce an error message. Here is some sample input for this stage.
+
+
+4. Stage IV
+In this stage, your program will check each command for various inconsistencies and impossible situations.
+
+First, your program should reject any reservation whose arrival date is later than the departure date, or any reservation where the guest arrives and departs on the same day (we're running a respectable establishment).
+
+Hint: Check the documentation for the datetime library for functions that help you with this.
+
+Your program must also check each reservation for a given bedroom for conflicts with any existing reservations for that bedroom; you can't rent the same room to two different guests on the same night. (Note, however, that one reservation can have the same arrival date as another reservation's departure date, since the departure date is the date the guest leaves, so the room is vacant that night.)
+
+Next, your program should print an error message if the user attempts to add a bedroom with the same number as one that is already on the list.
+
+Finally, if the user deletes a bedroom, your program should cancel all the reservations for that bedroom (printing an appropriate message for each cancellation).
+
+
+5. Stage V: For this stage, your program will produce various information listings.
+RB (for "reservations by bedroom"), followed by a number. Lists all reservations for a given bedroom.
+RG (for "reservations by guest"), followed by a string. List all reservations for a given guest.
+LA (for "list arrivals"), followed by a date in the same mm/dd/yyyy form as before. Print a list of all guests arriving on the specified date.
+LD (for "list departures"), followed by a date in the same mm/dd/yy form as before. Print a list of all guests departing on the specified date.
+LF (for "list free bedrooms"), followed by two dates. List all bedrooms that are free each night for a guest arriving on the first date and departing on the second.
+LO (for "list occupied bedrooms"), followed by two dates. List all bedrooms that are occupied for at least one night between the given arrival and departure dates.

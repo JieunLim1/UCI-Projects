@@ -1,0 +1,10 @@
+** This is a sample command file for the Anteater BandB, Stage I
+PL ***********************************************************
+PL Here is a list of available bedrooms (before adding any!)
+** A well-written program works gracefully with empty lists.
+LB
+PL ***********************************************************
+LB
+** Extra blanks around the command should be ignored
+ LB
+** That's the end of the sample data for Stage I.

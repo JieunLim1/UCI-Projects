@@ -1,0 +1,15 @@
+** This is a sample command file for the Anteater BandB, Stage IV
+** First, add some bedrooms:
+NB 101
+NB 102
+NB 103
+** Now make some reservations:
+RR 101 12/17/2012 12/19/2012 Claude Crillon
+RR 102 12/31/2012  1/5/2013 Donald Dorchester
+** Try a few reservations that go backwards in time:
+RR 103 11/3/2012 12/15/1989 Bonnie Bonaventure
+RR 103 12/17/2012 11/18/2012 Osamu Okura
+RR 103 12/31/2012 12/25/2012 Penelope Peninsula
+** And one that comes and goes on the same date:
+RR 103 12/1/2012 12/1/2012 Randolph Raffles
+LR

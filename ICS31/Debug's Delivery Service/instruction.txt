@@ -1,0 +1,47 @@
+Problem Introduction
+D-Bug wants to get in on all the profitable food apps and thinks that using drones will help people feel more comfortable ordering from the app instead of its competitors. He has assembled a team and wants you to write code for the drones' high-level thinking process, computing what to buy at each store and how much to charge each customer.
+
+Two of the biggest marketing points of your service is that your drone will:
+1) shop at several stores in order to find/purchase all of the items in a customer's order.
+2) always shop at the "cheapest" store first, before shopping at another store.
+
+Provided Code
+
+This problem can be solved without modifying the provided code. Write your code within the provided space. Since we are wrapping your code within a function for testing purposes, you need to ensure your code is indented properly.
+
+The Input: Your team is providing you with the following information as input to your code:
+
+a list of customers and their orders. The customers should be served in the order they appear in this list.
+a list of grocery stores and their inventories. The stores are sorted by average price, with the highest price first. You should use this to your advantage when "shopping at the cheapest store first"
+The Output: Your team needs you to print information to the drone but also expects that you create and modify certain data structures so that they can be used in later parts of their overall service. To ensure they are able to obtain that data, ensure you are modifying the data structures in place and that you do not modify the following line:
+
+return customer_totals, stores
+
+
+Part 1: Verify Stores are Ordered by Increasing Average Price
+Before the drone can take-off, it is required to inspect the store list in ASCENDING order by price (meaning from the least expensive to most expensive store). To verify the list, for each store:
+
+1) Calculate and print the average price of an item at the store.
+All monetary values will be positive & must be printed with two decimal places. (hint: use string formatting)
+2) Verify that the average price of the previously examined store is less than the current store.
+If any store is out of order, the drone cannot take off, and the program should print an error message. See Example 2.
+
+
+Part 2: Printing Each Customer's Order
+Now, the drone must access each customer's order. Print a catalog of each customer's order with the items printed in alphabetical order.
+To sort a list (or the keys of a dictionary) by alphabetical order, use the built-in: sorted(). sorted() will make a sorted copy of the list and will not affect the original list/data structure.
+
+
+Part 3: Purchasing Customer's Items from Stores
+Now that the drone has verified the stores are in order, and taken inventory of each customer's order, it will now begin the purchasing process.
+The drone will purchase items for each customer in the following manner:
+
+For each item in the customer's alphabetically sorted order, the drone should:
+Visit each store in ascending average price order (in the same order as Part 1)
+-Purchase as many of the current item as the customer requested, or as many as the store has.
+-NOTE: be sure to update the customer's order and in the store's inventory (decrease the quantity by the appropriate amount in each data structure).
+If the customer's order for that item is still not satisfied, the drone should continue to the next store and repeat the process.
+
+
+Part 4: Calculating Customer's Receipts
+Update your code to keep a receipt for each customer that outlines how much money each person spent at a given store. This data structure should be kept in the variable customer_totals. If the customer's order is empty, do not add them to the totals. Do not round the values.
